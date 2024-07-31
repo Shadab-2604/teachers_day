@@ -12,3 +12,5 @@ git log --oneline // to check the commit
 .gitignore 
 
 git reset --hard HEAD~1 
+
+hello
