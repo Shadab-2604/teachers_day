@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Flip Card</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .perspective {
+            perspective: 1000px;
+        }
+        .transform-style-preserve-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+        .duration-800 {
+            transition-duration: 800ms;
+        }
+
+        
+        .centered-card {
+            width: 60vw;   
+            height: 70vh;  
+            margin: auto;
+            border-radius: 1rem; 
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); 
+        }
+
+        .flip-card-inner {
+            transition: transform 800ms;
+        }
+
+        .flip-card.clicked .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        @media (max-width: 768px) {
+            .centered-card {
+                width: 85vw;   
+                height: 60vh; 
+            }
+        }
+        .flip-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 1rem; 
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+
+    <div class="flip-card centered-card perspective">
+        <div class="flip-card-inner relative w-full h-full text-center ">
+            <div class="flip-card-front absolute flex flex-col justify-center w-full h-full bg-white shadow-lg border border-gray-200 rounded-xl backface-hidden">
+                <img src="./teacher_page-0001.jpg" alt="First page of PDF">
+            </div>
+            <div class="flip-card-back absolute flex flex-col justify-center w-full h-full bg-white shadow-lg border border-gray-200 rounded-xl transform rotate-y-180 backface-hidden">
+                <img src="./teacher_page-0002.jpg" alt="Second page of PDF">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.flip-card').addEventListener('click', function() {
+            this.classList.toggle('clicked');
+        });
+    </script>
+</body>
+</html>
